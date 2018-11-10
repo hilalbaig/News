@@ -11,6 +11,8 @@ target 'News' do
   pod 'ReachabilitySwift'
   pod "BPStatusBarAlert"
   pod 'SwiftLint'
+  pod 'SDWebImage', '~> 4.0'
+
 
 
   target 'NewsTests' do

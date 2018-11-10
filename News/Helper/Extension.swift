@@ -42,34 +42,38 @@ extension ParentViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
         }
 }
 
-// MARK: - UIImageView Class Extension
-extension UIImageView {
-    public func imageFromServerURL(urlString: String) {
-        self.image = nil
-        URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, _, error) -> Void in
-
-            if error != nil {
-                print(error ?? "Error in downloading image")
-                return
-            }
-            DispatchQueue.main.async(execute: { () -> Void in
-                let image = UIImage(data: data!)
-                self.image = image
-            })
-
-        }).resume()
-    }}
 
 // MARK: - Date Extension
 extension String {
-    func  changeServerDateFormat() -> String {
-
-        let dateformater = DateFormatter()
-        dateformater.dateFormat = "yyyy-MM-dd"
-        let date = dateformater.date(from: self)
-        let newDF = DateFormatter()
-        newDF.dateFormat = "MMM dd, yyyy"
-        let dateString = newDF.string(from: date!)
+    func  UTCToShortLocal() -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        guard let date = dateFormatter.date(from: self) else {
+            return ""
+        }
+        dateFormatter.dateFormat = "h:mm a"
+        let dateString = dateFormatter.string(from: date)
+        return dateString.lowercased()
+        
+        
+        
+    }
+    
+    
+    func  UTCToLongLocal() -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        guard let date = dateFormatter.date(from: self) else {
+            return ""
+        }
+        
+        dateFormatter.dateFormat = "E, d MMM yyyy h:mm a"
+        let dateString = dateFormatter.string(from: date)
         return dateString
+        
+        
+        
     }
 }

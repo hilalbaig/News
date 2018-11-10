@@ -7,23 +7,24 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ArticleCell: UITableViewCell {
 
-	@IBOutlet weak var titleHeaderLabel: UILabel! {
+	@IBOutlet weak var lblTitle: UILabel! {
 		didSet {
-			titleHeaderLabel.textColor = UIColor.black
+			lblTitle.textColor = UIColor.black
         }
 	}
-	@IBOutlet weak var byLineLabel: UILabel! {
+	@IBOutlet weak var lblAuthor: UILabel! {
 		didSet {
-			byLineLabel.textColor = UIColor.lightGray
+			lblAuthor.textColor = UIColor.lightGray
         }
 	}
 
-	@IBOutlet weak var dateAndTimeLabel: UILabel! {
+	@IBOutlet weak var lblPublishedAt: UILabel! {
 		didSet {
-			dateAndTimeLabel.textColor = UIColor.darkGray
+			lblPublishedAt.textColor = UIColor.darkGray
 
 		}
 	}
@@ -38,4 +39,24 @@ class ArticleCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func populateData(article: Article) {
+        
+        lblTitle.text = article.title
+        lblAuthor.text = article.author
+        lblPublishedAt.text = article.publishedAt?.UTCToShortLocal()
+        
+        if let url = article.urlToImage {
+            self.articleImageView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "placeholder"))
+        }
+        
+    }
+    
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.articleImageView.image = UIImage(named: "placeholder")
+    }
+    
+    
 }

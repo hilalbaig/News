@@ -2,7 +2,7 @@
 //  Articles.swift
 //  News
 //
-//  Created by Hilal Baig on 11/9/18.
+//  Created by Hilal Baig on 11/10/18.
 //  Copyright © 2018 Hilal Baig. All rights reserved.
 //
 
