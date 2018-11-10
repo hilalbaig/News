@@ -24,16 +24,10 @@
                                     <constraint firstAttribute="height" constant="100" id="nVP-Vg-byC"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="3dE-SV-7A9">
-                                <rect key="frame" x="169" y="427" width="37" height="37"/>
-                                <color key="color" red="0.97762328386306763" green="0.30637660622596741" blue="0.37445378303527832" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="yad-Kk-PJD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="AqT-Yu-aJE"/>
-                            <constraint firstItem="3dE-SV-7A9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="NLg-dy-oor"/>
-                            <constraint firstItem="3dE-SV-7A9" firstAttribute="top" secondItem="yad-Kk-PJD" secondAttribute="bottom" constant="43.5" id="dqx-3I-Okn"/>
                             <constraint firstItem="yad-Kk-PJD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="nJ1-Ag-5bh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

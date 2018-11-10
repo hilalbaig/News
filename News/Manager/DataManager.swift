@@ -9,10 +9,7 @@
 import Foundation
 
 class DataManager {
-    private let session: URLSessionProtocol
-    init(session: URLSessionProtocol) {
-        self.session = session
-    }
+    static let sharedInstance = DataManager()
     // MARK: - Public Methods
     func getArticles(url: String, callback: @escaping (_ data: Data?, _ error: Error?) -> Void ) {
         guard let link = URL(string: url) else {
@@ -20,6 +17,8 @@ class DataManager {
             callback(nil, error)
             return
         }
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
         let request = URLRequest(url: link)
         let task = session.dataTask(with: request) {(data, _, error) in
             callback(data, error)

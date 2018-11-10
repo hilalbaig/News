@@ -6,7 +6,7 @@ target 'News' do
   use_frameworks!
 
   # Pods for News
-  pod 'Shimmer'
+  pod 'Shimmer', :inhibit_warnings => true
   pod 'DZNEmptyDataSet'
   pod 'ReachabilitySwift'
   pod "BPStatusBarAlert"

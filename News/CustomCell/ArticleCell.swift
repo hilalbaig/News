@@ -36,27 +36,18 @@ class ArticleCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-    
     func populateData(article: Article) {
-        
         lblTitle.text = article.title
         lblAuthor.text = article.author
         lblPublishedAt.text = article.publishedAt?.UTCToShortLocal()
-        
         if let url = article.urlToImage {
             self.articleImageView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "placeholder"))
         }
-        
     }
-    
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         self.articleImageView.image = UIImage(named: "placeholder")
     }
-    
-    
 }

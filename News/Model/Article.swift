@@ -13,7 +13,6 @@ struct ArticlesResponse: Decodable {
 	var totalResults: Int = 0
 	var articles: [Article]?
 }
-
 struct Article: Decodable {
     var author: String? = ""
 	var title: String? = ""
@@ -23,4 +22,3 @@ struct Article: Decodable {
 	var publishedAt: String? = ""
 	var content: String? = ""
 }
-

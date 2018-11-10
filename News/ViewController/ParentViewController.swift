@@ -32,7 +32,6 @@ class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Set the data source and delegate
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
-        
         // Add Refresh Control to Table View
         if #available(iOS 10.0, *) {
             self.tableView.refreshControl = refreshControl
@@ -47,7 +46,6 @@ class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewWillAppear(_ animated: Bool) {
        self.title = "NEWS"
-        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,24 +59,19 @@ class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	}
 
     // MARK: - Local Class Methods
-    
-    
     func setupNetworking() {
         let reachability = Reachability()!
-       
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
-        
         do {
             try reachability.startNotifier()
         } catch {
             print("Unable to start notifier")
         }
     }
-    
     @objc func reachabilityChanged(note: Notification) {
-        
-        let reachability = note.object as! Reachability
-        
+        guard let reachability = note.object as? Reachability else {
+            return
+        }
         switch reachability.connection {
         case .wifi:
             if self.arrArtciles.count == 0 {
@@ -92,46 +85,35 @@ class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDa
             BPStatusBarAlert().bgColor(color: .orange).message(message: "Network not reachable").show()
         }
     }
-    
     @objc func loadData() {
-        self.arrArtciles.removeAll();
+        self.arrArtciles.removeAll()
         isDataLoading = true
-        self.tableView.reloadData();
-        
-        let session = URLSession.shared
-        let dataManger = DataManager(session: session)
-        let url = K.API.BaseURL + "?country=us&apiKey=" + K.API.Key
-        dataManger.getArticles(url: url) { [weak self] (data, error) in
-            
+        self.tableView.reloadData()
+        //let session = URLSession.shared
+        //let dataManger = DataManager(session: session)
+        let url = Const.API.BaseURL + "?country=us&apiKey=" + Const.API.Key
+        DataManager.sharedInstance.getArticles(url: url) { [weak self] (data, error) in
             self?.isDataLoading = false
             DispatchQueue.main.async {
                 self?.refreshControl.endRefreshing()
             }
-            
-
             guard error == nil else {
                 self?.tableView.reloadData()
                 return
-                
             }
-            
             guard let data = data else {return}
             do {
                 let response = try JSONDecoder().decode(ArticlesResponse.self, from: data)
-                
                 self?.isDataLoading = false
                 if let articles = response.articles {
                     self?.arrArtciles = articles
                 }
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
-                    
                 }} catch let error {
                     print("Error: \(error.localizedDescription)")
                     self?.tableView.reloadData()
             }
-            
-            
         }
     }
 
@@ -151,32 +133,22 @@ class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         if isDataLoading {
             let cell: UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "LoadingCell", for: indexPath)
-            
-            
-            let shimmerView: FBShimmeringView = FBShimmeringView.init(frame:cell.bounds )
+            let shimmerView: FBShimmeringView = FBShimmeringView.init(frame: cell.bounds )
             shimmerView.shimmeringOpacity = 0.3
             shimmerView.isShimmering = true
             shimmerView.contentView = cell.viewWithTag(55)
             shimmerView.shimmeringEndFadeDuration = 0.3
             cell.addSubview(shimmerView)
-            
-            
-            
             return cell
-        
         } else {
             let cell: ArticleCell = (self.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ArticleCell)!
-        
             let article: Article = arrArtciles[indexPath.row]
             cell.populateData(article: article)
-    
             return cell
 
         }
 	}
-    
-
-	// Method to run when table view cell is tapped
+    // Method to run when table view cell is tapped
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         if !isDataLoading {
@@ -186,7 +158,6 @@ class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isDataLoading {
             return 80
@@ -194,6 +165,4 @@ class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return UITableViewAutomaticDimension
         }
     }
-    
-    
 }
