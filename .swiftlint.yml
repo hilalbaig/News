@@ -1,0 +1,22 @@
+
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+- Carthage
+- Pods
+
+# implicitly
+line_length: 300
+# they can set both implicitly with an array
+type_body_length:
+- 300 # warning
+- 400 # error
+# or they can set both explicitly
+file_length:
+warning: 500
+error: 1200
+
+type_name:
+min_length: 2 # only warning
+
+
+disabled_rules: # rule identifiers to exclude from running
+- identifier_name

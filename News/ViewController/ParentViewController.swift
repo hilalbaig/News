@@ -47,6 +47,7 @@ class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewWillAppear(_ animated: Bool) {
        self.title = "NEWS"
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,23 +65,31 @@ class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func setupNetworking() {
         let reachability = Reachability()!
-        
-        
-        reachability.whenReachable = { [weak self] reachability in
-            if self?.arrArtciles.count == 0 {
-                self?.loadData()
-            }
-            print("Reachable")
-        }
-        
-        reachability.whenUnreachable = { _ in
-            print("Not reachable")
-        }
+       
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
         
         do {
             try reachability.startNotifier()
         } catch {
             print("Unable to start notifier")
+        }
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+        
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .wifi:
+            if self.arrArtciles.count == 0 {
+                self.loadData()
+            }
+        case .cellular:
+            if self.arrArtciles.count == 0 {
+                self.loadData()
+            }
+        case .none:
+            BPStatusBarAlert().bgColor(color: .orange).message(message: "Network not reachable").show()
         }
     }
     
@@ -94,30 +103,34 @@ class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let url = K.API.BaseURL + "?country=us&apiKey=" + K.API.Key
         dataManger.getArticles(url: url) { [weak self] (data, error) in
             
+            self?.isDataLoading = false
+            DispatchQueue.main.async {
+                self?.refreshControl.endRefreshing()
+            }
+            
+
             guard error == nil else {
+                self?.tableView.reloadData()
                 return
                 
             }
             
             guard let data = data else {return}
             do {
-                self?.isDataLoading = false
                 let response = try JSONDecoder().decode(ArticlesResponse.self, from: data)
+                
+                self?.isDataLoading = false
                 if let articles = response.articles {
                     self?.arrArtciles = articles
                 }
                 DispatchQueue.main.async {
-                    self?.refreshControl.endRefreshing()
                     self?.tableView.reloadData()
-                }
-                
-                
-            } catch let error {
-                self?.isDataLoading = false
-                print("Error: \(error.localizedDescription)")
-                self?.refreshControl.endRefreshing()
-                self?.tableView.reloadData()
+                    
+                }} catch let error {
+                    print("Error: \(error.localizedDescription)")
+                    self?.tableView.reloadData()
             }
+            
             
         }
     }

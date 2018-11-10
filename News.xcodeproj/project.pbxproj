@@ -46,6 +46,9 @@
 		DE5243B42196F3BD000609CE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5243B32196F3BD000609CE /* DataManager.swift */; };
 		DE5243B52196F3BD000609CE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5243B32196F3BD000609CE /* DataManager.swift */; };
 		DE5243B62196F3BD000609CE /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5243B32196F3BD000609CE /* DataManager.swift */; };
+		DE5243BE219742F1000609CE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DE5243BD219742F0000609CE /* .swiftlint.yml */; };
+		DE5243BF219742F1000609CE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DE5243BD219742F0000609CE /* .swiftlint.yml */; };
+		DE5243C0219742F1000609CE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DE5243BD219742F0000609CE /* .swiftlint.yml */; };
 		DECF8FA42195DDEC00638906 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DECF8FA32195DDEC00638906 /* Assets.xcassets */; };
 		DECF8FB22195DDED00638906 /* NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF8FB12195DDED00638906 /* NewsTests.swift */; };
 		DECF8FBD2195DDED00638906 /* NewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF8FBC2195DDED00638906 /* NewsUITests.swift */; };
@@ -89,6 +92,7 @@
 		DE5243AB2196F3A1000609CE /* URLSessionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		DE5243AC2196F3A2000609CE /* URLSesionDataTaskProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSesionDataTaskProtocol.swift; sourceTree = "<group>"; };
 		DE5243B32196F3BD000609CE /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		DE5243BD219742F0000609CE /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		DECF8F992195DDEC00638906 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DECF8FA32195DDEC00638906 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DECF8FA82195DDEC00638906 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 		DECF8F902195DDEC00638906 = {
 			isa = PBXGroup;
 			children = (
+				DE5243BD219742F0000609CE /* .swiftlint.yml */,
 				DECF8F9B2195DDEC00638906 /* News */,
 				DECF8FB02195DDED00638906 /* NewsTests */,
 				DECF8FBB2195DDED00638906 /* NewsUITests */,
@@ -281,6 +286,7 @@
 				DECF8F962195DDEC00638906 /* Frameworks */,
 				DECF8F972195DDEC00638906 /* Resources */,
 				A2B5A6423360845810810F21 /* [CP] Embed Pods Frameworks */,
+				DE5243C12197430F000609CE /* Swift Lint Run Script */,
 			);
 			buildRules = (
 			);
@@ -380,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE5243BE219742F1000609CE /* .swiftlint.yml in Resources */,
 				DE5243932195ED01000609CE /* Main.storyboard in Resources */,
 				DE5243902195ED01000609CE /* LaunchScreen.storyboard in Resources */,
 				DECF8FA42195DDEC00638906 /* Assets.xcassets in Resources */,
@@ -390,6 +397,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE5243BF219742F1000609CE /* .swiftlint.yml in Resources */,
 				DE5243912195ED01000609CE /* LaunchScreen.storyboard in Resources */,
 				DE5243942195ED01000609CE /* Main.storyboard in Resources */,
 			);
@@ -399,6 +407,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE5243C0219742F1000609CE /* .swiftlint.yml in Resources */,
 				DE5243922195ED01000609CE /* LaunchScreen.storyboard in Resources */,
 				DE5243952195ED01000609CE /* Main.storyboard in Resources */,
 			);
@@ -486,6 +495,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-News/Pods-News-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		DE5243C12197430F000609CE /* Swift Lint Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

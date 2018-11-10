@@ -38,7 +38,7 @@ extension ParentViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
         }
 
         func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
-    
+            self.loadData()
         }
 }
 
