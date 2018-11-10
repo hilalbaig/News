@@ -147,8 +147,8 @@
 		DE52435F2195ED01000609CE /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				DE5243602195ED01000609CE /* DetailViewController.swift */,
 				DE5243612195ED01000609CE /* ParentViewController.swift */,
+				DE5243602195ED01000609CE /* DetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -179,6 +179,13 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		DE5243992196EA52000609CE /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		DECF8F902195DDEC00638906 = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +211,7 @@
 		DECF8F9B2195DDEC00638906 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				DE5243992196EA52000609CE /* Manager */,
 				DE5243542195ED00000609CE /* Core */,
 				DE52435F2195ED01000609CE /* ViewController */,
 				DE5243622195ED01000609CE /* CustomCell */,

@@ -10,6 +10,7 @@ import UIKit
 import DZNEmptyDataSet
 import Shimmer
 import BPStatusBarAlert
+import Reachability
 
 class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -28,6 +29,8 @@ class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Set the data source and delegate
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
+        
+        setupNetworking()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +48,23 @@ class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	}
 
     // MARK: - Local Class Methods
+    func setupNetworking() {
+        let reachability = Reachability()!
+        
+        reachability.whenReachable = { reachability in
+            print("Reachable")
+        }
+        
+        reachability.whenUnreachable = { _ in
+            print("Not reachable")
+        }
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+    }
 
     // MARK: - 🏁 Protocols Conformance
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Reachability
 
 class DetailViewController: UIViewController {
 
@@ -21,7 +22,10 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        setupNetworking()
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +37,24 @@ class DetailViewController: UIViewController {
     }
 
     // MARK: - Local Class Methods
-
+    func setupNetworking() {
+        let reachability = Reachability()!
+        
+        reachability.whenReachable = { reachability in
+            print("Reachable")
+        }
+        
+        reachability.whenUnreachable = { _ in
+            print("Not reachable")
+        }
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+    }
+    
     func loadData() {
     }
 
