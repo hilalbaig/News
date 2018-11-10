@@ -34,6 +34,9 @@
 		DE5243962195ED01000609CE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE52436B2195ED01000609CE /* Extension.swift */; };
 		DE5243972195ED01000609CE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE52436B2195ED01000609CE /* Extension.swift */; };
 		DE5243982195ED01000609CE /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE52436B2195ED01000609CE /* Extension.swift */; };
+		DE5243A42196F020000609CE /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5243A32196F01F000609CE /* Article.swift */; };
+		DE5243A52196F020000609CE /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5243A32196F01F000609CE /* Article.swift */; };
+		DE5243A62196F020000609CE /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5243A32196F01F000609CE /* Article.swift */; };
 		DECF8FA42195DDEC00638906 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DECF8FA32195DDEC00638906 /* Assets.xcassets */; };
 		DECF8FB22195DDED00638906 /* NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF8FB12195DDED00638906 /* NewsTests.swift */; };
 		DECF8FBD2195DDED00638906 /* NewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECF8FBC2195DDED00638906 /* NewsUITests.swift */; };
@@ -73,6 +76,7 @@
 		DE5243672195ED01000609CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE5243692195ED01000609CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE52436B2195ED01000609CE /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		DE5243A32196F01F000609CE /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		DECF8F992195DDEC00638906 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DECF8FA32195DDEC00638906 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DECF8FA82195DDEC00638906 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,6 +190,14 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		DE5243A22196F01F000609CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE5243A32196F01F000609CE /* Article.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DECF8F902195DDEC00638906 = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +223,7 @@
 		DECF8F9B2195DDEC00638906 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				DE5243A22196F01F000609CE /* Model */,
 				DE5243992196EA52000609CE /* Manager */,
 				DE5243542195ED00000609CE /* Core */,
 				DE52435F2195ED01000609CE /* ViewController */,
@@ -464,6 +477,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE5243A42196F020000609CE /* Article.swift in Sources */,
 				DE5243962195ED01000609CE /* Extension.swift in Sources */,
 				DE5243842195ED01000609CE /* DetailViewController.swift in Sources */,
 				DE5243872195ED01000609CE /* ParentViewController.swift in Sources */,
@@ -481,6 +495,7 @@
 				DE5243882195ED01000609CE /* ParentViewController.swift in Sources */,
 				DE52438E2195ED01000609CE /* LoadingCell.swift in Sources */,
 				DE5243972195ED01000609CE /* Extension.swift in Sources */,
+				DE5243A52196F020000609CE /* Article.swift in Sources */,
 				DE52438B2195ED01000609CE /* ArticleCell.swift in Sources */,
 				DE5243852195ED01000609CE /* DetailViewController.swift in Sources */,
 				DECF8FB22195DDED00638906 /* NewsTests.swift in Sources */,
@@ -495,6 +510,7 @@
 				DE5243892195ED01000609CE /* ParentViewController.swift in Sources */,
 				DE52438F2195ED01000609CE /* LoadingCell.swift in Sources */,
 				DE5243982195ED01000609CE /* Extension.swift in Sources */,
+				DE5243A62196F020000609CE /* Article.swift in Sources */,
 				DE52438C2195ED01000609CE /* ArticleCell.swift in Sources */,
 				DE5243862195ED01000609CE /* DetailViewController.swift in Sources */,
 				DECF8FBD2195DDED00638906 /* NewsUITests.swift in Sources */,

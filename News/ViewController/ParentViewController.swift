@@ -18,6 +18,8 @@ class ParentViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 	@IBOutlet weak var tableView: UITableView!
 
+    var arrArtciles: [Article] = []
+
 	
     var isDataLoading: Bool = false
 
