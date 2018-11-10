@@ -6,7 +6,12 @@ target 'News' do
   use_frameworks!
 
   # Pods for News
-    
+  pod 'Shimmer'
+  pod 'DZNEmptyDataSet'
+  pod 'ReachabilitySwift'
+  pod "BPStatusBarAlert"
+  pod 'SwiftLint'
+
 
   target 'NewsTests' do
     inherit! :search_paths
