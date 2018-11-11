@@ -1,5 +1,5 @@
-### NEWS API App (https://newsapi.org/)
-App to list all the news feeds in a list. The selection of any new feed would load the detail page of news.
+### News API
+App to list all the news feeds in a list from https://newsapi.org/. The selection of any new feed would load the detail page of news.
 
 ### Features:
 List of all the news
