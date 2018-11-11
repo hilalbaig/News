@@ -1,14 +1,16 @@
-# NEWS API App (https://newsapi.org/)
-Write an app to list all the news feeds in a list. The selection of any new feed would load the detail
-page of news. The task includes
-1. List of all the news with on demand updates
-2. Show the details and images on the details page
-3. API Details : https://newsapi.org/
+### NEWS API App (https://newsapi.org/)
+App to list all the news feeds in a list. The selection of any new feed would load the detail page of news.
 
-# Instructions:
-1. Keep it Simple
-2. Use Github - Commit Often, Perfect Later, Publish Once.
-3. The solution should be a mobile application.
-4. Document your code.
-5. Code should not contain any warnings, or errors.
-6. App should support all mobile devices running iOS 10 and above.
+### Features:
+List of all the news
+Show the details and images on the details page
+Link to read full story on News site
+Cached images
+Pulldown to refresh
+Shimmer effect for Loading cells
+Network Reachabilty: Shows status alert on network change
+Showing `empty datasets` whenever the listing has no content to display
+Zero warnings: using SwiftLint tool to enforce Swift style and conventions.
+
+### Third Parties Libraries
+Shimmer, DZNEmptyDataSet, ReachabilitySwift, BPStatusBarAlert, SwiftLint, SDWebImage
